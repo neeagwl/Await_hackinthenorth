@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavigationBar } from './components/NavigationBar';
-import { Home } from './Home';
 import { About } from './About';
-
+import Home from './Home';
+import LogIn from './components/LogIn'
+import SignUp from './components/SignUp'
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          {/* <Route path="./login" component={LogIn} />
-          <Route path="/signup" component={SignUp} /> */}
+          <Route path="/components/LogIn" component={LogIn} />
+          <Route path="/components/SignUp" component={SignUp} />
         </Switch>
       </Router>
     </React.Fragment>

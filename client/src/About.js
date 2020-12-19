@@ -1,24 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
+import './About.css';
 
-const GridWrapper = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  margin-top: 1em;
-  margin-left: 6em;
-  margin-right: 6em;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(25px, auto);
-`; 
-
-export const About = () => {
- 
-  return (
-    <GridWrapper>
-      <h2>About Page</h2>
-      <p>About US</p>
-      {/* <p>{items}</p> */}
-    </GridWrapper>
-  )
-}
+export const About = () => (
+  <>
+  <div className="about-section">
+      <div className="inner-container">
+          <h1>About Us</h1>
+          <p className="text">
+          Getting treatment done when unwell is challenging. Therefore, Await tries to unburden and simplify the rest of the processes – we let you find and book health care specialists through a well-accomplished, systemized process. </p>
+          <div className="skills">
+              <span>Easy to Use</span>
+              <span>Efficient</span>
+              <span>Easy Communication</span>
+          </div>
+      </div>
+  </div>
+</>
+)
