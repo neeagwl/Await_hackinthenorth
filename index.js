@@ -1,20 +1,37 @@
 // "C:\Program Files\MongoDB\Server\4.4\bin\mongo.exe"
+const dotenv = require("dotenv");
+dotenv.config();
 
 const express = require('express');
 require('./src/db/mongoose');
-var passport = require("passport");
+const passport = require("passport");
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-var LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local");
 const bcrypt = require('bcryptjs');
 const authRouter = require('./src/router/auth');
 const User = require('./src/models/User');
-
+const middleware = require("./src/middleware/index");
 const app = express();
 
-app.use(cookieParser('secret'));
+//Session config for production environment
+const MongoDBStore=require("connect-mongo")(session);
+const secret= process.env.SECRET;
+const db_url = "mongodb://localhost:27017/"+process.env.DATABASE_NAME || process.env.DB_URL ;
+const store=new MongoDBStore({
+    url:db_url,
+    secret,
+    touchAfter:24*60*60
+});
+store.on("error",function(e){
+    console.log("SESSION STORE ERROR",e);
+})
+
+
 //passport-authenticate
+app.use(cookieParser('secret'));
 app.use(session({
+    store,
     secret: 'secret',
     maxAge: 3600000,
     resave: true,
@@ -23,6 +40,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 passport.use(new LocalStrategy({ usernameField: 'username' }, async (username, password, done) => {
     // User Matching 
