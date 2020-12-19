@@ -3,7 +3,7 @@ const User = require('../models/User');
 var passport = require("passport");
 const router = new express.Router();
 
-router.post('/register', async (req, res) => {
+router.post('/api/register', async (req, res) => {
     const user = new User(req.body);
     try {
         await user.save();
@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
     }
 })
 
-router.post('/login',
+router.post('/api/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
     async (req, res) => {
         console.log(req.user);

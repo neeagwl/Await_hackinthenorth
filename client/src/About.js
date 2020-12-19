@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+
 const GridWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -9,9 +11,14 @@ const GridWrapper = styled.div`
   grid-template-columns: repeat(12, 1fr);
   grid-auto-rows: minmax(25px, auto);
 `; 
-export const About = () => (
-  <GridWrapper>
-    <h2>About Page</h2>
-    <p>About US</p>
-  </GridWrapper>
-)
+
+export const About = () => {
+ 
+  return (
+    <GridWrapper>
+      <h2>About Page</h2>
+      <p>About US</p>
+      {/* <p>{items}</p> */}
+    </GridWrapper>
+  )
+}
