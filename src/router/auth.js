@@ -1,5 +1,9 @@
 const express = require('express');
 const User = require('../models/User');
+const  Appointment= require('../models/Appointment');
+const Doctor = require('../models/Doctor');
+
+
 var passport = require("passport");
 const router = new express.Router();
 
@@ -29,5 +33,6 @@ router.post('/login',
             res.status(400).send()
         }
     })
+
 
 module.exports = router;
