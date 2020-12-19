@@ -1,4 +1,6 @@
 // "C:\Program Files\MongoDB\Server\4.4\bin\mongo.exe"
+const dotenv = require("dotenv");
+dotenv.config();
 
 const express = require("express");
 require("./src/db/mongoose");
@@ -9,19 +11,40 @@ var LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
 const User = require("./src/models/User");
 const bodyParser = require("body-parser");
+const middleware = require("./src/middleware/index");
 
 const app = express();
-
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
 
-app.use(cookieParser("secret"));
+//Session config for production environment
+const MongoDBStore = require("connect-mongo")(session);
+const secret = process.env.SECRET;
+const db_url =
+  "mongodb://localhost:27017/" + process.env.DATABASE_NAME ||
+  process.env.DB_URL;
+const store = new MongoDBStore({
+  url: db_url,
+  secret,
+  touchAfter: 24 * 60 * 60,
+});
+store.on("error", function (e) {
+  console.log("SESSION STORE ERROR", e);
+});
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 //passport-authenticate
+app.use(cookieParser("secret"));
 app.use(
   session({
+    store,
     secret: "secret",
     maxAge: 3600000,
     resave: true,
