@@ -1,9 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { BrowserRouter as Router} from "react-router-dom";
 import './Home.css';
+import {NavigationBarDoctor} from './NavigationBar';
 
 function HomeDoctor() {
 return (
 <>
+<Router>
+  <NavigationBarDoctor/>
+</Router>
 <div className="info">
 <div className="card">
       <div className="card-image"></div>

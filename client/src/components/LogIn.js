@@ -17,8 +17,11 @@ class LogIn extends React.Component{
         })
         console.log(res);
         if(res.status===200){
-            
-            this.props.history.push('/');
+            if(res.data.isDoctor){
+                this.props.history.push("/components/Doctor/Home")
+            }else{
+                this.props.history.push("/components/Patients/Home")
+            }
         }else{
             this.props.history.push('/components/LogIn');
         }
