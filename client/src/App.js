@@ -18,7 +18,7 @@ function App() {
   return (
     <React.Fragment>
       <Router>
-        <NavigationBar />
+        {/* <NavigationBar /> */}
     
      {/* <NavigationBarPatient /> */}
 

@@ -1,29 +1,36 @@
 import React, { useState } from 'react'
+import {NavigationBar} from './NavigationBar';
+import {BrowserRouter as Router} from "react-router-dom";
 import "./SignUp.css";
 import axios from 'axios';
 
 class SignUp extends React.Component{
 
-    state={username:'',password:'',name:'',email:'',age:0,gender:'',isDoctor:false}
+    state={username:'',password:'',name:'',email:'',age:'',gender:'',isDoctor:false}
 
     handleSubmit=async (e)=>{
         e.preventDefault();
         const data=this.state;
-        console.log(data);
+        // console.log(data);
         const res = await axios.post('/api/register',
         {
                 data
         })
+        // console.log(res);
         if(res.status===201){
-            this.props.history.push('/');
+            this.props.history.push('/components/LogIn');
         }else{
-            this.props.history.push('/register');
+            this.props.history.push('/components/SignUp');
         }
         
     }
 
     render(){
     return (
+        <>
+        <Router>
+            <NavigationBar/>
+        </Router>
         <div className="login">
             <div className="wrapper">
             <div className="title">
@@ -92,7 +99,7 @@ class SignUp extends React.Component{
                 </form>
             </div>
         </div>
-
+        </>
     )
     }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router} from "react-router-dom";
 import axios from 'axios'
 import './Home.css';
+import {NavigationBar} from './components/NavigationBar';
 
 class Home extends Component {
 
@@ -70,6 +72,9 @@ class Home extends Component {
     render() {
         return (
           <>
+          <Router>
+            <NavigationBar/>
+          </Router>
            <form className="searchbox">
              <input type="search" placeholder="Search for Doctor" />
              <button type="submit" value="search">&nbsp;</button>

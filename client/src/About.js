@@ -1,8 +1,13 @@
 import React from 'react';
+import {BrowserRouter as Router} from "react-router-dom";
 import './About.css';
+import {NavigationBar} from './components/NavigationBar';
 
 export const About = () => (
   <>
+  <Router>
+      <NavigationBar/>
+  </Router>
   <div className="about-section">
       <div className="inner-container">
           <h1>About Us</h1>

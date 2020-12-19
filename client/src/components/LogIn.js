@@ -1,6 +1,8 @@
 import React from 'react'
 import "./LogIn.css";
 import axios from 'axios';
+import {NavigationBar} from './NavigationBar';
+import {BrowserRouter as Router} from "react-router-dom";
 
 class LogIn extends React.Component{
     state={username:'', password:''};
@@ -13,16 +15,21 @@ class LogIn extends React.Component{
                 username:data.username,
                 password:data.password
         })
+        console.log(res);
         if(res.status===200){
             
             this.props.history.push('/');
         }else{
-            this.props.history.push('/login');
+            this.props.history.push('/components/LogIn');
         }
         
     }
     render(){
         return (
+            <>
+            <Router>
+                <NavigationBar/>
+            </Router>
             <div className="login">
             <div className="wrapper">
                 <div className="title">
@@ -52,7 +59,7 @@ class LogIn extends React.Component{
                 </form>
             </div>
         </div>
-
+            </>
         )
     }
 }

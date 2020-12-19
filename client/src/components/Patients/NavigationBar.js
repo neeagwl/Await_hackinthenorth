@@ -24,9 +24,7 @@ export const NavigationBarPatient = () => (
       <Navbar.Collapse id="basic-navbar-nav" >
         <Nav className="ml-auto">
           <Nav.Item><Nav.Link href="/components/Patients/Home">Select Doctor</Nav.Link></Nav.Item> 
-          <Nav.Item><Nav.Link href="/about">Abos</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/components/Patinet/LoginPatient">For Patient</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/components/Doctor/LoginDoc">For Doctor</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/about">About Us</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

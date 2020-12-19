@@ -8,14 +8,16 @@ var passport = require("passport");
 const router = new express.Router();
 
 router.post('/api/register', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const user = new User(req.body.data);
     try {
         await user.save();
-        passport.authenticate("local")(req,res,function(){
-            console.log(req.user);
-            res.status(201).send(user);
-        });
+        // console.log(user);
+        res.status(201).send(user);
+        // passport.authenticate("local")(req,res,function(){
+        //     console.log(req.user);
+        //     res.status(201).send(user);
+        // });
     } catch (e) {
         console.log(e)
         res.status(400).send(e)
