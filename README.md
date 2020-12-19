@@ -2,7 +2,7 @@
 Await create's a virtual queue of patients for a doctor checkup. It makes easy for the Patient to set an appointment to the doctor and the Doctor to handle patients efficiently.
 
 ## Presentation Link
-https://1drv.ms/p/s!AoTW3zxR3ARCc5ZsD97J3IRpXJs?e=N7KEJt
+https://1drv.ms/p/s!AtNaPm3Dvx0sap2uFe-90knrIj4?e=1tQQRh
 
 ## Screenshots
 ![A](https://user-images.githubusercontent.com/64153988/102697713-f1241e80-425d-11eb-8ad0-745cb36675b9.jpeg)
