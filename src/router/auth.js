@@ -4,7 +4,8 @@ var passport = require("passport");
 const router = new express.Router();
 
 router.post('/api/register', async (req, res) => {
-    const user = new User(req.body);
+    console.log(req.body);
+    const user = new User(req.body.data);
     try {
         await user.save();
         passport.authenticate("local")(req,res,function(){
@@ -22,7 +23,7 @@ router.post('/api/login',
     async (req, res) => {
         console.log(req.user);
         try {
-            const user = await User.findOne({ email: req.body.email })
+            const user = await User.findOne({ username: req.user.username })
             res.status(200).send(user)
         } catch (e) {
             console.log(e);

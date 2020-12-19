@@ -1,20 +1,45 @@
 import React from 'react'
 import "./LogIn.css";
+import axios from 'axios';
 
-function LogIn() {
+class LogIn extends React.Component{
+    state={username:'', password:''};
 
-    return (
-        <div className="login">
+    handleSubmit=async (e)=>{
+        e.preventDefault();
+        const data= this.state;
+        const res = await axios.post('/api/login',
+        {
+                username:data.username,
+                password:data.password
+        })
+        if(res.status===200){
+            
+            this.props.history.push('/');
+        }else{
+            this.props.history.push('/login');
+        }
+        
+    }
+    render(){
+        return (
+            <div className="login">
             <div className="wrapper">
                 <div className="title">
                     Log In</div>
-                <form action="./NavigationBarPatient">
+                <form action="./NavigationBarPatient" onSubmit={this.handleSubmit}>
                     <div className="field">
-                        <input type="text" required />
-                        <label>Email Address</label>
+                        <input type="text" 
+                        value={this.state.username}
+                        onChange={e=> this.setState({username:e.target.value})}
+                         required />
+                        <label>Username</label>
                     </div>
                     <div className="field">
-                        <input type="password" required />
+                        <input type="password"
+                            value={this.state.password}
+                            onChange={e=> this.setState({password:e.target.value})}
+                        required />
                         <label>Password</label>
                     </div>
                     <div className="content">
@@ -28,7 +53,8 @@ function LogIn() {
             </div>
         </div>
 
-    )
+        )
+    }
 }
 
 export default LogIn

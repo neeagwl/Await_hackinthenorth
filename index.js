@@ -13,6 +13,12 @@ const authRouter = require('./src/router/auth');
 const User = require('./src/models/User');
 const middleware = require("./src/middleware/index");
 const app = express();
+const bodyParser = require("body-parser");
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 //Session config for production environment
 const MongoDBStore=require("connect-mongo")(session);
